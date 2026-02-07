@@ -5,5 +5,5 @@
     </filter>
   </defs>
   <rect x="0" y="0" width="120" height="28" rx="6" ry="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" filter="url(#badgeShadow)"/>
-  <text x="60" y="18" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="600" font-family="system-ui, -apple-system, sans-serif">{{{label}}}</text>
+  <text x="60" y="18" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="600" font-family="system-ui, -apple-system, sans-serif">default badge</text>
 </svg>

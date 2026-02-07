@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const PKG_NAME = 'readme-components';
+const PKG_NAME = 'readme-kit';
 
 function getPackageComponentsDir() {
   const pkgRoot = path.dirname(require.resolve(PKG_NAME + '/package.json'));
@@ -46,12 +46,12 @@ function cmdInit() {
     }
   }
 
-  console.log('Init done. Add components with: readme-components add <name>');
+  console.log(`Init done. Add components with: ${PKG_NAME} add <name>`);
 }
 
 function cmdAdd(name) {
   if (!name) {
-    console.error('Usage: readme-components add <component-name>');
+    console.error(`Usage: ${PKG_NAME} add <component-name>`);
     process.exit(1);
   }
 
@@ -85,7 +85,7 @@ if (cmd === 'init') cmdInit();
 else if (cmd === 'add') cmdAdd(arg);
 else if (cmd === 'list') cmdList();
 else {
-  console.log(`Usage: readme-components <command> [options]
+  console.log(`Usage: ${PKG_NAME} <command> [options]
 Commands:
   init              Create components/ and build.js in current directory
   add <name>        Add a component (e.g. add pill-badge)
