@@ -5,3 +5,5 @@
 <!-- component badge label="default badge" -->
 
 <!-- component icon-badge label=TypeScript icon=typescript -->
+
+<!-- component icon-badge label="JavaScript" icon=javascript variant=gradient -->

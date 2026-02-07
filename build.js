@@ -57,6 +57,8 @@ const result = template.replace(
       }
     }
 
+    params.isGradient = params.variant === "gradient";
+
     const source = fs.readFileSync(componentPath, "utf8");
     const fn = Handlebars.compile(source);
     const content = fn(params).trim();
