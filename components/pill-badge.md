@@ -1,0 +1,1 @@
+<div style="display: inline-block; padding: 0.25em 0.6em; font-size: 14px; font-weight: 600; color: #fff; background: linear-gradient(90deg, #6366f1, #8b5cf6); border-radius: 9999px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">{{{label}}}</div>
