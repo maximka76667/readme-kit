@@ -1,6 +1,6 @@
 {
   "name": "readme-kit",
-  "version": "1.0.10",
+  "version": "1.0.14",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,8 +17,9 @@
   },
   "files": [
     "cli.js",
-    "build.js",
-    "components"
+    "components",
+    "README.md",
+    ".readme-kit"
   ],
   "bin": {
     "readme-kit": "./cli.js"

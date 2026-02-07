@@ -6,12 +6,12 @@ const PKG_NAME = "readme-kit";
 
 function getPackageComponentsDir() {
   const pkgRoot = path.dirname(require.resolve(PKG_NAME + "/package.json"));
-  return path.join(pkgRoot, "components");
+  return path.join(pkgRoot, ".readme-kit", "components");
 }
 
 function getBuildPath() {
   const pkgRoot = path.dirname(require.resolve(PKG_NAME + "/package.json"));
-  return path.join(pkgRoot, "build.js");
+  return path.join(pkgRoot, ".readme-kit", "build.js");
 }
 
 function ensureDir(dir) {
@@ -39,12 +39,11 @@ function cmdInit() {
   if (fs.existsSync(pkgPath)) {
     const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
     pkg.scripts = pkg.scripts || {};
-    if (!pkg.scripts.build) {
-      pkg.scripts.build = `node ${README_KIT_DIR}/build.js`;
+    const buildScript = `node ${README_KIT_DIR}/build.js`;
+    if (pkg.scripts.build !== buildScript) {
+      pkg.scripts.build = buildScript;
       fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2), "utf8");
-      console.log(
-        `Added "build": "node ${README_KIT_DIR}/build.js" to package.json`
-      );
+      console.log(`Set "build": "${buildScript}" in package.json`);
     }
     if (!pkg.dependencies?.handlebars || !pkg.dependencies?.["simple-icons"]) {
       console.log("Run: npm install handlebars simple-icons");
