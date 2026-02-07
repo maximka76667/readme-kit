@@ -15,18 +15,23 @@ function getIconBySlug(slug) {
   return icons.find((i) => i.slug === slug) || null;
 }
 
-const TEMPLATE = "README.template.md";
-const OUTPUT = "README.md";
-const ASSETS_DIR = "readme-assets";
-const COMPONENTS_DIR = path.join(__dirname, "components");
+const cwd = process.cwd();
+const kitDir = path.join(cwd, ".readme-kit");
+
+const TEMPLATE = path.join(cwd, "README.template.md");
+const OUTPUT = path.join(cwd, "README.md");
+const COMPONENTS_DIR = path.join(kitDir, "components");
+const ASSETS_DIR_NAME = "assets";
+const ASSETS_DIR_ABSOLUTE = path.join(kitDir, ASSETS_DIR_NAME);
+const ASSETS_LINK = ".readme-kit/" + ASSETS_DIR_NAME;
 
 const template = fs.readFileSync(TEMPLATE, "utf8");
 let svgCounter = 0;
 
 function ensureAssetsDir() {
-  const dir = path.join(__dirname, ASSETS_DIR);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  return dir;
+  if (!fs.existsSync(ASSETS_DIR_ABSOLUTE))
+    fs.mkdirSync(ASSETS_DIR_ABSOLUTE, { recursive: true });
+  return ASSETS_DIR_ABSOLUTE;
 }
 
 const result = template.replace(
@@ -64,12 +69,12 @@ const result = template.replace(
     const content = fn(params).trim();
 
     if (content.toLowerCase().startsWith("<svg")) {
-      const assetsDir = ensureAssetsDir();
+      ensureAssetsDir();
       const filename = `component-${svgCounter}.svg`;
-      const filePath = path.join(assetsDir, filename);
+      const filePath = path.join(ASSETS_DIR_ABSOLUTE, filename);
       fs.writeFileSync(filePath, content, "utf8");
       svgCounter += 1;
-      return `![](${ASSETS_DIR}/${filename})`;
+      return `![](${ASSETS_LINK}/${filename})`;
     }
 
     return content;
@@ -78,4 +83,5 @@ const result = template.replace(
 
 fs.writeFileSync(OUTPUT, result, "utf8");
 console.log(`Wrote ${OUTPUT}`);
-if (svgCounter > 0) console.log(`Wrote ${svgCounter} SVG(s) to ${ASSETS_DIR}/`);
+if (svgCounter > 0)
+  console.log(`Wrote ${svgCounter} SVG(s) to ${ASSETS_LINK}/`);

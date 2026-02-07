@@ -18,18 +18,21 @@ function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
 
+const README_KIT_DIR = ".readme-kit";
+
 function cmdInit() {
   const cwd = process.cwd();
-  const componentsDir = path.join(cwd, "components");
+  const rootDir = path.join(cwd, README_KIT_DIR);
+  const componentsDir = path.join(rootDir, "components");
   ensureDir(componentsDir);
 
   const buildSrc = getBuildPath();
-  const buildDest = path.join(cwd, "build.js");
+  const buildDest = path.join(rootDir, "build.js");
   if (!fs.existsSync(buildDest)) {
     fs.copyFileSync(buildSrc, buildDest);
-    console.log("Created build.js");
+    console.log("Created .readme-kit/build.js");
   } else {
-    console.log("build.js already exists, skipping");
+    console.log(".readme-kit/build.js already exists, skipping");
   }
 
   const pkgPath = path.join(cwd, "package.json");
@@ -37,12 +40,14 @@ function cmdInit() {
     const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
     pkg.scripts = pkg.scripts || {};
     if (!pkg.scripts.build) {
-      pkg.scripts.build = "node build.js";
+      pkg.scripts.build = `node ${README_KIT_DIR}/build.js`;
       fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2), "utf8");
-      console.log('Added "build": "node build.js" to package.json');
+      console.log(
+        `Added "build": "node ${README_KIT_DIR}/build.js" to package.json`
+      );
     }
     if (!pkg.dependencies?.handlebars || !pkg.dependencies?.["simple-icons"]) {
-      console.log("Running: npm install handlebars simple-icons");
+      console.log("Run: npm install handlebars simple-icons");
     }
   }
 
@@ -67,7 +72,7 @@ function cmdAdd(name) {
   }
 
   const cwd = process.cwd();
-  const componentsDir = path.join(cwd, "components");
+  const componentsDir = path.join(cwd, README_KIT_DIR, "components");
   ensureDir(componentsDir);
   const destFile = path.join(componentsDir, `${name}.md`);
   fs.copyFileSync(sourceFile, destFile);
@@ -89,9 +94,8 @@ else if (cmd === "add") cmdAdd(arg);
 else if (cmd === "list") cmdList();
 else {
   console.log(`Usage: ${PKG_NAME} <command> [options]
-Commands:
-  init              Create components/ and build.js in current directory
-  add <name>        Add a component (e.g. add pill-badge)
-  list              List available components`);
-  process.exit(cmd ? 1 : 0);
+        Commands:
+          init              Create .readme-kit/ with components/ and build.js
+          add <name>        Add a component into .readme-kit/components/
+          list              List available components`);
 }
