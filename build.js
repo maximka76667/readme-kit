@@ -1,13 +1,26 @@
-const fs = require('fs');
-const path = require('path');
-const Handlebars = require('handlebars');
+const fs = require("fs");
+const path = require("path");
+const Handlebars = require("handlebars");
 
-const TEMPLATE = 'README.template.md';
-const OUTPUT = 'README.md';
-const ASSETS_DIR = 'readme-assets';
-const COMPONENTS_DIR = path.join(__dirname, 'components');
+let simpleIcons;
+try {
+  simpleIcons = require("simple-icons");
+} catch (_) {
+  simpleIcons = null;
+}
 
-const template = fs.readFileSync(TEMPLATE, 'utf8');
+function getIconBySlug(slug) {
+  if (!simpleIcons || !slug) return null;
+  const icons = Object.values(simpleIcons).filter((x) => x && x.slug && x.path);
+  return icons.find((i) => i.slug === slug) || null;
+}
+
+const TEMPLATE = "README.template.md";
+const OUTPUT = "README.md";
+const ASSETS_DIR = "readme-assets";
+const COMPONENTS_DIR = path.join(__dirname, "components");
+
+const template = fs.readFileSync(TEMPLATE, "utf8");
 let svgCounter = 0;
 
 function ensureAssetsDir() {
@@ -32,15 +45,27 @@ const result = template.replace(
         params[p[1]] = p[3] !== undefined ? p[3] : p[4];
       }
     }
-    const source = fs.readFileSync(componentPath, 'utf8');
+
+    if (params.icon) {
+      const icon = getIconBySlug(String(params.icon).toLowerCase());
+      if (icon) {
+        params.iconPath = icon.path;
+        params.iconColor = "#" + icon.hex;
+      } else {
+        params.iconPath = "";
+        params.iconColor = "#64748b";
+      }
+    }
+
+    const source = fs.readFileSync(componentPath, "utf8");
     const fn = Handlebars.compile(source);
     const content = fn(params).trim();
 
-    if (content.toLowerCase().startsWith('<svg')) {
+    if (content.toLowerCase().startsWith("<svg")) {
       const assetsDir = ensureAssetsDir();
       const filename = `component-${svgCounter}.svg`;
       const filePath = path.join(assetsDir, filename);
-      fs.writeFileSync(filePath, content, 'utf8');
+      fs.writeFileSync(filePath, content, "utf8");
       svgCounter += 1;
       return `![](${ASSETS_DIR}/${filename})`;
     }
@@ -49,6 +74,6 @@ const result = template.replace(
   }
 );
 
-fs.writeFileSync(OUTPUT, result, 'utf8');
+fs.writeFileSync(OUTPUT, result, "utf8");
 console.log(`Wrote ${OUTPUT}`);
 if (svgCounter > 0) console.log(`Wrote ${svgCounter} SVG(s) to ${ASSETS_DIR}/`);
