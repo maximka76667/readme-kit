@@ -28,7 +28,9 @@ npm run build
 
 ## How it works
 
-- Placeholders like <!-- component name key=value --> are replaced at build time.
+Important: you have to create README.template.md and basically the package designed to modify only this file and do not touch README.md itself.
+
+- Placeholders like `<!-- component name key=value -->` are replaced at build time.
 - Components are Handlebars templates; SVG output is written to readme-assets/ and inlined as ![](readme-assets/component-N.svg) so GitHub renders them.
 - Icons come from the simple-icons package (installed with the project).
 
