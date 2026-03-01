@@ -34,6 +34,10 @@ Important: you have to create README.template.md and basically the package desig
 - Components are Handlebars templates; SVG output is written to readme-assets/ and inlined as ![](readme-assets/component-N.svg) so GitHub renders them.
 - Icons come from the simple-icons package (installed with the project).
 
-<!-- component icon-badge label=TypeScript icon=typescript -->
+<!-- component icon-badge label=TypeScript icon=typescript href="https://www.typescriptlang.org" -->
 
 <!-- component icon-badge label="JavaScript" icon=javascript variant=gradient -->
+
+<!-- component tag-badge label="Open Source" width=100 -->
+
+<!-- component tag-badge label="Open Source" icon=typescript width=100 variant=gradient -->

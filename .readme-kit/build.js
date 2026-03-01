@@ -63,6 +63,7 @@ const result = template.replace(
     }
 
     params.isGradient = params.variant === "gradient";
+    params._id = svgCounter;
 
     const source = fs.readFileSync(componentPath, "utf8");
     const fn = Handlebars.compile(source);
@@ -74,7 +75,9 @@ const result = template.replace(
       const filePath = path.join(ASSETS_DIR_ABSOLUTE, filename);
       fs.writeFileSync(filePath, content, "utf8");
       svgCounter += 1;
-      return `![](${ASSETS_LINK}/${filename})`;
+
+      const img = `![](${ASSETS_LINK}/${filename})`;
+      return params.href ? `[${img}](${params.href})` : img;
     }
 
     return content;
