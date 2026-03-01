@@ -8,9 +8,9 @@
   
   {{#if isGradient}}
   <rect x="0" y="0" width="100%" height="32" rx="16" ry="16" fill="url(#tagGrad-{{_id}})"/>
-  <text x="50%" y="17" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{{label}}}</text>
+  <text x="50%" y="17" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{label}}</text>
   {{else}}
   <rect x="0" y="0" width="100%" height="32" rx="16" ry="16" fill="white" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="50%" y="17" text-anchor="middle" dominant-baseline="middle" fill="#334155" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{{label}}}</text>
+  <text x="50%" y="17" text-anchor="middle" dominant-baseline="middle" fill="#334155" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{label}}</text>
   {{/if}}
 </svg>

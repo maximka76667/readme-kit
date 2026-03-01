@@ -16,9 +16,9 @@
       <path d="{{{iconPath}}}" fill="white"/>
     </g>
   </g>
-  <text x="39" y="17" text-anchor="start" dominant-baseline="middle" fill="white" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{{label}}}</text>
+  <text x="39" y="17" text-anchor="start" dominant-baseline="middle" fill="white" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{label}}</text>
   {{else}}
-  <text x="53" y="17" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{{label}}}</text>
+  <text x="53" y="17" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{label}}</text>
   {{/if}}
   {{else}}
   <rect x="0" y="0" width="105" height="32" rx="16" ry="16" fill="white"/>
@@ -26,9 +26,9 @@
   <g transform="translate(10, 6) scale(0.833)">
     <path d="{{{iconPath}}}" fill="{{iconColor}}"/>
   </g>
-  <text x="39" y="17" text-anchor="start" dominant-baseline="middle" fill="#334155" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{{label}}}</text>
+  <text x="39" y="17" text-anchor="start" dominant-baseline="middle" fill="#334155" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{label}}</text>
   {{else}}
-  <text x="53" y="17" text-anchor="middle" dominant-baseline="middle" fill="#334155" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{{label}}}</text>
+  <text x="53" y="17" text-anchor="middle" dominant-baseline="middle" fill="#334155" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{label}}</text>
   {{/if}}
   {{/if}}
 </svg>

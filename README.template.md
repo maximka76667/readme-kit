@@ -51,3 +51,8 @@ Important: you have to create README.template.md and basically the package desig
 <!-- component subtitle label="Technologies" width=250 -->
 
 <!-- component subtitle label="Technologies" width=250 color="#f59e0b" -->
+
+<!-- component subtitle label="You & me" width=250 color="#f59e0b" -->
+
+<!-- component split-badge prefix="Email" label="maximgriven@gmail.com" width=220 splitPos=70 prefixX=35 labelX=145 color="#ef4444" -->
+<!-- component split-badge prefix="LinkedIn" label="@maximgriven" width=180 splitPos=85 prefixX=42 labelX=132 color="#0a66c2" -->

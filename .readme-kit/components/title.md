@@ -7,10 +7,10 @@
   </defs>
 
 {{#if isGradient}}
-<text x="0" y="32" fill="url(#titleGrad-{{_id}})" font-size="28" font-weight="800" font-family="system-ui, sans-serif">{{{label}}}</text>
+<text x="0" y="32" fill="url(#titleGrad-{{_id}})" font-size="28" font-weight="800" font-family="system-ui, sans-serif">{{label}}</text>
 <rect x="0" y="44" width="40" height="4" rx="2" fill="url(#titleGrad-{{_id}})"/>
 {{else}}
-<text x="0" y="32" fill="{{#if color}}{{color}}{{else}}#1e293b{{/if}}" font-size="28" font-weight="800" font-family="system-ui, sans-serif">{{{label}}}</text>
+<text x="0" y="32" fill="{{#if color}}{{color}}{{else}}#1e293b{{/if}}" font-size="28" font-weight="800" font-family="system-ui, sans-serif">{{label}}</text>
 <rect x="0" y="44" width="40" height="4" rx="2" fill="{{#if color}}{{color}}{{else}}#6366f1{{/if}}"/>
 {{/if}}
 </svg>
