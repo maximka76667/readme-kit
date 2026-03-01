@@ -41,3 +41,9 @@ Important: you have to create README.template.md and basically the package desig
 <!-- component tag-badge label="Open Source" width=100 -->
 
 <!-- component tag-badge label="Open Source" icon=typescript width=100 variant=gradient -->
+
+<!-- component title label="Technologies" width=250 -->
+
+<!-- component title label="Technologies" width=250 color="#f59e0b" -->
+
+<!-- component title label="Technologies" width=250 variant=gradient -->
