@@ -47,3 +47,7 @@ Important: you have to create README.template.md and basically the package desig
 <!-- component title label="Technologies" width=250 color="#f59e0b" -->
 
 <!-- component title label="Technologies" width=250 variant=gradient -->
+
+<!-- component subtitle label="Technologies" width=250 -->
+
+<!-- component subtitle label="Technologies" width=250 color="#f59e0b" -->

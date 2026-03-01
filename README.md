@@ -47,3 +47,7 @@ Important: you have to create README.template.md and basically the package desig
 ![](.readme-kit/assets/component-5.svg)
 
 ![](.readme-kit/assets/component-6.svg)
+
+![](.readme-kit/assets/component-7.svg)
+
+![](.readme-kit/assets/component-8.svg)
