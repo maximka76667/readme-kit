@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="250" height="48" viewBox="0 0 250 48">
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="56" viewBox="0 0 250 56">
   <defs>
     <linearGradient id="titleGrad-5" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#f59e0b"/>
@@ -6,6 +6,6 @@
     </linearGradient>
   </defs>
 
-<text x="0" y="32" fill="#f59e0b" font-size="28" font-weight="800" font-family="system-ui, sans-serif">Technologies</text>
-<rect x="0" y="44" width="40" height="4" rx="2" fill="#f59e0b"/>
+<text x="0" y="38" fill="#f59e0b" font-size="32" font-weight="900" font-family="'Segoe UI Variable Display', 'Segoe UI', system-ui, sans-serif" style="letter-spacing: -0.02em;">Technologies</text>
+<rect x="0" y="48" width="48" height="6" rx="3" fill="#f59e0b"/>
 </svg>
