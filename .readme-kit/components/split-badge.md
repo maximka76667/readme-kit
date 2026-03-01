@@ -1,13 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="{{width}}" height="32" viewBox="0 0 {{width}} 32">
-  <!-- Right background -->
-  <rect x="0" y="0" width="{{width}}" height="32" rx="16" ry="16" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <defs>
+    <linearGradient id="splitGrad-{{_id}}" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:{{#if color}}{{color}}{{else}}#6366f1{{/if}}"/>
+      <stop offset="100%" style="stop-color:{{#if color2}}{{color2}}{{else}}#4f46e5{{/if}}"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main Unified Background -->
+  <rect width="{{width}}" height="32" rx="16" fill="url(#splitGrad-{{_id}})"/>
   
-  <!-- Left background (Platform/Prefix) -->
-  <path d="M 16,0 L {{splitPos}},0 L {{splitPos}},32 L 16,32 A 16,16 0 0 1 0,16 A 16,16 0 0 1 16,0 Z" fill="{{#if color}}{{color}}{{else}}#6366f1{{/if}}"/>
+  <!-- Subtle Left Section (Glass effect) -->
+  <rect width="{{splitPos}}" height="32" rx="16" fill="white" fill-opacity="0.15"/>
   
-  <!-- Prefix Text (e.g., EMAIL) -->
-  <text x="{{prefixX}}" y="17" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="10" font-weight="800" font-family="system-ui, sans-serif" style="text-transform: uppercase; letter-spacing: 0.5px;">{{prefix}}</text>
-  
-  <!-- Label Text (e.g., your email) -->
-  <text x="{{labelX}}" y="17" text-anchor="middle" dominant-baseline="middle" fill="#334155" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{label}}</text>
+  <!-- Minimalist Separator Line -->
+  <line x1="{{splitPos}}" y1="10" x2="{{splitPos}}" y2="22" stroke="white" stroke-opacity="0.2" stroke-width="1"/>
+
+  <!-- Platform Name (Clean Typography) -->
+
+<text x="{{prefixX}}" y="17" text-anchor="middle" dominant-baseline="middle" fill="white" fill-opacity="0.8" font-size="10" font-weight="800" font-family="system-ui, sans-serif" style="text-transform: uppercase; letter-spacing: 0.8px;">{{prefix}}</text>
+
+  <!-- The Data (High Contrast) -->
+
+<text x="{{labelX}}" y="17" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="12" font-weight="600" font-family="system-ui, sans-serif">{{label}}</text>
 </svg>
